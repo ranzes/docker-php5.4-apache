@@ -3,7 +3,7 @@
 # Work derived from official PHP Docker Library:
 # Copyright (c) 2014-2015 Docker, Inc.
 
-FROM debian:jessie
+FROM debian:stretch
 
 # persistent / runtime deps
 RUN apt-get update && apt-get install -y ca-certificates curl librecode0 libsqlite3-0 libxml2 --no-install-recommends && rm -r /var/lib/apt/lists/*
