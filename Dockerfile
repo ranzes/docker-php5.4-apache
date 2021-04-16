@@ -9,7 +9,7 @@ FROM debian:stretch
 RUN apt-get update && apt-get install -y ca-certificates curl librecode0 libsqlite3-0 libxml2 --no-install-recommends && rm -r /var/lib/apt/lists/*
 
 #RUN apt-get -y install nano build-essential checkinstall zip
-
+RUN apt-get install gnupg
 #RUN apt-get -y install libfcgi-dev libfcgi0ldbl libjpeg62-dbg libmcrypt-dev libssl-dev
 
 # phpize deps
