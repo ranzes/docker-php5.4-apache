@@ -79,7 +79,6 @@ RUN buildDeps=" \
                 --enable-soap \
                 --enable-calendar \
                 --with-mcrypt \
-                --with-gd \
                 --enable-inline-optimization \
                 --enable-sockets \
                 --enable-sysvsem \
