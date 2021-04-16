@@ -8,6 +8,10 @@ FROM debian:jessie
 # persistent / runtime deps
 RUN apt-get update && apt-get install -y ca-certificates curl librecode0 libsqlite3-0 libxml2 --no-install-recommends && rm -r /var/lib/apt/lists/*
 
+RUN pt-get -y install nano build-essential checkinstall zip
+
+RUN apt-get -y install libfcgi-dev libfcgi0ldbl libjpeg62-dbg libmcrypt-dev libssl-dev
+
 # phpize deps
 RUN apt-get update && apt-get install -y autoconf file g++ gcc libc-dev make pkg-config re2c --no-install-recommends && rm -r /var/lib/apt/lists/*
 
@@ -62,13 +66,44 @@ RUN buildDeps=" \
 		--with-config-file-path="$PHP_INI_DIR" \
 		--with-config-file-scan-dir="$PHP_INI_DIR/conf.d" \
 		$PHP_EXTRA_CONFIGURE_ARGS \
-		--disable-cgi \
 		--enable-mysqlnd \
 		--with-curl \
 		--with-openssl \
 		--with-readline \
 		--with-recode \
 		--with-zlib \
+	        --with-freetype-dir \
+                --enable-cgi \
+                --enable-mbstring \
+                --with-libxml \
+                --enable-soap \
+                --enable-calendar \
+                --with-mcrypt \
+                --with-gd \
+                --enable-inline-optimization \
+                --with-bz2 \
+                --enable-sockets \
+                --enable-sysvsem \
+                --enable-sysvshm \
+                --enable-pcntl \
+                --enable-mbregex \
+                --with-mhash \
+                --enable-zip \
+                --with-pcre-regex \
+                --with-mysql \
+                --with-pdo-mysql \
+                --with-mysqli \
+                --with-openssl \
+                --enable-exif \
+                --enable-dba \
+                --with-gettext \
+                --enable-shmop \
+                --enable-sysvmsg \
+                --enable-bcmath \
+                --enable-ftp \
+                --enable-intl \
+                --with-pspell
+		
 	&& make -j"$(nproc)" \
 	&& make install \
 	&& { find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; } \
