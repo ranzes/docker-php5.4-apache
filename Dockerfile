@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y ca-certificates curl librecode0 libsqli
 
 #RUN apt-get -y install nano build-essential checkinstall zip
 
-RUN apt-get -y install libfcgi-dev libfcgi0ldbl libjpeg62-dbg libmcrypt-dev libssl-dev
+#RUN apt-get -y install libfcgi-dev libfcgi0ldbl libjpeg62-dbg libmcrypt-dev libssl-dev
 
 # phpize deps
 RUN apt-get update && apt-get install -y autoconf file g++ gcc libc-dev make pkg-config re2c --no-install-recommends && rm -r /var/lib/apt/lists/*
