@@ -83,7 +83,6 @@ RUN buildDeps=" \
 		$PHP_EXTRA_CONFIGURE_ARGS \
 		--enable-mysqlnd \
 		--with-curl=/usr/local \
-		--with-openssl \
 		--with-readline \
 		--with-recode \
 		--with-zlib \
