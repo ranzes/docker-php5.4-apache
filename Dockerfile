@@ -43,6 +43,7 @@ RUN apt-get update && apt-get -y install libbz2-dev libcurl4-gnutls-dev --no-ins
 #	done
 
 ENV PHP_VERSION 5.4.45
+RUN cd /usr/local/include && n -s /usr/include/x86_64-linux-gnu/curl curl
 
 # --enable-mysqlnd is included below because it's harder to compile after the fact the extensions are (since it's a plugin for several extensions, not an extension in itself)
 RUN buildDeps=" \
@@ -68,7 +69,7 @@ RUN buildDeps=" \
 		--with-config-file-scan-dir="$PHP_INI_DIR/conf.d" \
 		$PHP_EXTRA_CONFIGURE_ARGS \
 		--enable-mysqlnd \
-		--with-curl \
+		--with-curl=/usr/local \
 		--with-openssl \
 		--with-readline \
 		--with-recode \
