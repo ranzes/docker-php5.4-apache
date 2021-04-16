@@ -81,7 +81,6 @@ RUN buildDeps=" \
                 --with-mcrypt \
                 --with-gd \
                 --enable-inline-optimization \
-                --with-bz2 \
                 --enable-sockets \
                 --enable-sysvsem \
                 --enable-sysvshm \
