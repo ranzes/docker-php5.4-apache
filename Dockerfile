@@ -53,9 +53,9 @@ RUN apt-get update && apt-get -y install libpspell-dev librecode-dev libbz2-dev 
 ENV PHP_VERSION 5.4.45
 RUN cd /usr/local/include && ln -s /usr/include/x86_64-linux-gnu/curl curl
 
-RUN apt-get update && apt-get -y install ssl-cert libgpm2 psmisc www-browser apache2-doc apache2-suexec-pristine \
+RUN apt-get update && apt-get -y install ssl-cert libgpm2 psmisc apache2-doc apache2-suexec-pristine \
       apache2-suexec-custom libcurl4-doc libcurl3-dbg libidn11-dev libkrb5-dev libldap2-dev librtmp-dev \
-      libssh2-1-dev libssl1.0-dev libssl-dev gmp-doc libgmp10-doc libmpfr-dev && rm -r /var/lib/apt/lists/*
+      libssh2-1-dev libssl1.0-dev libssl-dev libgmp10-doc libmpfr-dev && rm -r /var/lib/apt/lists/*
 
 
 # --enable-mysqlnd is included below because it's harder to compile after the fact the extensions are (since it's a plugin for several extensions, not an extension in itself)
