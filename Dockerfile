@@ -109,7 +109,6 @@ RUN buildDeps=" \
                 --with-mysql \
                 --with-pdo-mysql \
                 --with-mysqli \
-                --with-openssl \
                 --enable-exif \
                 --enable-dba \
                 --with-gettext \
