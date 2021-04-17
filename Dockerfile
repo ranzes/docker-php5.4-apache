@@ -8,7 +8,7 @@ FROM debian:stretch
 # persistent / runtime deps
 RUN apt-get update && apt-get install -y ca-certificates curl librecode0 libsqlite3-0 libxml2 --no-install-recommends && rm -r /var/lib/apt/lists/*
 
-RUN apt-get update && apt-get -y install nano build-essential checkinstall zip --no-install-recommends && rm -r /var/lib/apt/lists/*
+RUN apt-get update && apt-get -y install vim default-mysql-client  build-essential checkinstall zip --no-install-recommends && rm -r /var/lib/apt/lists/*
 RUN apt-get update && apt-get -y install gnupg --no-install-recommends && rm -r /var/lib/apt/lists/*
 RUN apt-get update && apt-get -y install libfcgi-dev libfcgi0ldbl libmcrypt-dev libssl-dev --no-install-recommends && rm -r /var/lib/apt/lists/*
 
