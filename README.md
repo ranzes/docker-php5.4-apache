@@ -1,29 +1,27 @@
-# A Apache+PHP5.4 docker image (for tests purpose only)
+# A Apache 2.4  e PHP 5.4 imagem docker
 
-Based on the [10up legacy image](https://github.com/10up/Docker-Images/tree/master/legacy/php/5.4/apache).
 
 ----
 
-## Instructions
+## Instruções
 
-The text below is just a suggestion. You can adapt this to whatever you want :)
 
-In project root directory, you'll have to create
-1. Two folders:
-    * `dev`: you'll use this folder to keep your PHP files. It'll be mapped to apache's `/var/www/html`
-    * `db_data`: docker will use this folder to keep your MariaDB data.
+1. Crie uma pasta para seu projeto.
+Dentro da pasta crie duas pastas:
+    * `dev`: Coloque o conteúdo da sua aplicação dentro da pasta dev. normalmente usado  o conteúdo de `/var/www/html`
+    * `db_data`: Pasta usada para  o banco de dados.
 
-2. A `docker-compose.yml` file with this content:
+2. Crie o arquivo `docker-compose.yml` com o seguinte código:
 ```
 version: '3'
 
 services:
   wordpress:
-    build: https://github.com/felipeelia/docker-php5.4-apache.git
+    build: https://github.com/ranzes/docker-php5.4-apache.git
     links:
       - mysql
     ports:
-      - 80:80
+      - 8080:8080
     volumes:
       - ./dev/:/var/www/html
 
@@ -34,15 +32,15 @@ services:
     ports:
      - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: wordpress
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: senha do root
+      MYSQL_DATABASE: nome do banco
+      MYSQL_USER: usuario do banco
+      MYSQL_PASSWORD: senha do usuario do banco
 
 volumes:
     db_data:
 ```
 
-Run `docker-compose up` in the project root and docker will build the image. It'll take a while for the first time, but it'll be cached for the next time.
+Execute `docker-compose build` dentro da raiz da pastado projeto para contruir a imagem do container.
 
-DO NOT use this image for production.
+Execute docker-compose up  para subir o container.
