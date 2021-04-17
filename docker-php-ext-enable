@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -e
 
 cd "$(php -r 'echo ini_get("extension_dir");')"
