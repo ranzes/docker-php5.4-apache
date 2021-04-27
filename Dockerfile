@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -y libcurl4-openssl-dev pkg-config libjpeg
 RUN apt-get update && apt-get install -y zlib1g-dev libicu-dev g++ --no-install-recommends && rm -r /var/lib/apt/lists/*
 
 RUN rm -rf /var/www/html && mkdir -p /var/lock/apache2 /var/run/apache2 /var/log/apache2 /var/www/html && chown -R www-data:www-data /var/lock/apache2 /var/run/apache2 /var/log/apache2 /var/www/html
-RUN apt-get install libapache2-mpm-itk
+
 # Apache + PHP requires preforking Apache for best results
 RUN a2dismod mpm_event && a2enmod mpm_prefork
 
@@ -133,7 +133,7 @@ WORKDIR /var/www/html
 RUN a2enmod auth_basic authn_core authn_file authz_core authz_host authz_user access_compat
 # Enable apache2 rewrite engine
 RUN a2enmod rewrite
-
+RUN a2dismod mpm_event ; a2enmod mpm_prefork
 RUN docker-php-ext-install mysql mysqli pdo pdo_mysql
 
 # Change www-data user to match the host system UID and GID and chown www directory
