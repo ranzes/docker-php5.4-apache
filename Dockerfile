@@ -50,7 +50,7 @@ RUN apt-get update && apt-get -y install libpspell-dev librecode-dev libbz2-dev 
 #		gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
 #	done
 
-ENV PHP_VERSION 5.4.45
+ENV PHP_VERSION 5.6.40
 RUN cd /usr/local/include && ln -s /usr/include/x86_64-linux-gnu/curl curl
 
 RUN apt-get update && apt-get -y install ssl-cert libgpm2 psmisc apache2-doc apache2-suexec-pristine \
